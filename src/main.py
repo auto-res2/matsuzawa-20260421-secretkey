@@ -13,7 +13,7 @@ def main():
         client = Anthropic(api_key=api_key)
 
         response = client.messages.create(
-            model="claude-3-haiku-20240307",  # 軽量モデル
+            model="claude-haiku-4-5-20251001",
             max_tokens=300,
             messages=[
                 {"role": "user", "content": "自己紹介をしてください。"}
