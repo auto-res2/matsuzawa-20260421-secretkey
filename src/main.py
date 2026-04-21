@@ -1,24 +1,27 @@
 import os
-from openai import OpenAI
+from anthropic import Anthropic
 
 
 def main():
-    if not (api_key := os.getenv("OPENAI_API_KEY")):
-        print("❌ OPENAI_API_KEY が設定されていません")
+    if not (api_key := os.getenv("ANTHROPIC_API_KEY")):
+        print("❌ ANTHROPIC_API_KEY が設定されていません")
         return
 
-    print("✅ OPENAI_API_KEY を検出しました。")
+    print("✅ ANTHROPIC_API_KEY を検出しました。")
 
     try:
-        client = OpenAI(api_key=api_key)
+        client = Anthropic(api_key=api_key)
 
-        response = client.responses.create(
-            model="gpt-4.1-nano",
-            input="自己紹介をしてください。"
+        response = client.messages.create(
+            model="claude-3-haiku-20240307",  # 軽量モデル
+            max_tokens=300,
+            messages=[
+                {"role": "user", "content": "自己紹介をしてください。"}
+            ],
         )
 
         print("✅ API呼び出し成功:")
-        print(response.output[0].content[0].text)
+        print(response.content[0].text)
 
     except Exception as e:
         print("❌ API呼び出しに失敗しました")
