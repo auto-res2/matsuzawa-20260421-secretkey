@@ -14,7 +14,7 @@ def main():
 
         response = client.responses.create(
             model="gpt-4.1-nano",
-            input="Say 'API key works!'"
+            input="自己紹介をしてください。"
         )
 
         print("✅ API呼び出し成功:")
