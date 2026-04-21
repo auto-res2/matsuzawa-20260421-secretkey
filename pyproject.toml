@@ -1,1 +1,6 @@
-# Please list the required python packages.
+[project]
+name = "matsuzawa-20260421-secretkey"
+version = "0.1.0"
+dependencies = [
+    "openai>=1.35.13"
+]
